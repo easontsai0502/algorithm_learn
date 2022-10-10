@@ -1,0 +1,35 @@
+{
+	"gitname": "algorithm_learn",
+	"git_log": [
+		{
+			"name": "main",
+			"verson_tree": [
+				{
+					"time": "10-10-2022-15:43",
+					"by": {
+						"name": "ET01",
+						"mail": "kagariet01@outlook.com"
+					},
+					"do": "git create",
+					"name": "algorithm_learn"
+				},
+				{
+					"time": "10-10-2022-15:43",
+					"by": {
+						"name": "ET01",
+						"mail": "kagariet01@outlook.com"
+					},
+					"do": "files edie",
+					"add": [
+						"./dp/LCS/LCS_1.cpp",
+						"./dp/LIS/LIS_1.cpp"
+					],
+					"remove": [],
+					"edit": [],
+					"other_thing": "",
+					"other_branch": []
+				}
+			]
+		}
+	]
+}
