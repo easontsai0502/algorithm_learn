@@ -39,7 +39,8 @@
 					"add": [
 						"./dp/TFbackpack/TFbackpack_mult_item.cpp",
 						"./dp/tree/dsu/dsu_1.cpp",
-						"./basic.cpp"
+						"./basic.cpp",
+						"./tree/BFS/bfs_1.cpp"
 					],
 					"remove": [],
 					"edit": [],
