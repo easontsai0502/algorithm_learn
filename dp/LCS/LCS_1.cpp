@@ -1,5 +1,7 @@
 /*
 [Q]https://atcoder.jp/contests/dp/tasks/dp_f
+[LCS]
+[最長共用子序列]
 [AC]
 */
 

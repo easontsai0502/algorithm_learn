@@ -1,5 +1,7 @@
 /*
 [From]https://yuihuang.com/dp-lis/
+[LIS]
+[最長遞增子序列]
 */
 #include <iostream>
 #include <vector>
