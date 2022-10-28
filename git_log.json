@@ -52,7 +52,21 @@
 					"by":{"name":"ET01","mail":"kagariet01@outlook.com"},
 					"do":"files edie",
 					"add":[
-						"./DC/DC_!.cpp"
+						"./DC/DC_1.cpp"
+					]
+				},
+				{
+					"time":"10-28-2022-18:56",
+					"by":{"name":"ET01","mail":"kagariet01@outlook.com"},
+					"do":"files edie",
+					"add":[
+						"./tree/tree_1.cpp",
+						"./tree/bfs/bfs_q_1.cpp",
+						"./tree/bfs/bfs_q_2.cpp"
+					],
+					"remove":[
+						"./tree/bfs/bfs_1.cpp",
+						"./tree/bfs/bfs_2.cpp"
 					]
 				}
 			]
