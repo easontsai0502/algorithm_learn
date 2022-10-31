@@ -33,6 +33,7 @@ using namespace std;
 /*fn宣告*/
 /*自訂義*/
 const INT maxn=10000;
+INT n;
 /*num*/
 INT dsu[maxn];
 /*fn定義*/
@@ -54,6 +55,28 @@ INT dsu_insert(INT a,INT b){//將a和b連在一起
 }
 bool dsu_get(INT a,INT b){//查詢a和b是否連線
 	return dsu_find(a)==dsu_find(b);
+}
+void dsu_pop(INT a){//將自己移除那群裡
+//待驗證
+	INT newboss=0;//新老大
+	INT aboss=dsu_find(a);//a的老大
+	if(aboss==a){//如果自己就是老大
+		for(INT i=0;i<n;i++){//找尋跟隨a的人，將它設為老大
+			if(i==a)continue;
+			if(dsu[i]==a){
+				newboss=i;
+				break;
+			}
+		}
+	}else{//如果自己不是老大
+		newboss=dsu_find(a);//教歸順a的人全部歸順 a的老大
+	}
+	for(INT i=0;i<n;i++){//所有人跟隨新老大
+		if(dsu[i]==a){
+			dsu[i]=newboss;
+		}
+	}
+	dsu[a]=a;//自己被孤立了，那自己就是自己的老大
 }
 /*main*/
 int main(){
