@@ -94,9 +94,13 @@
 					"by":{"name":"ET01","mail":"kagariet01@outlook.com"},
 					"do":"files edie",
 					"add":[
-						"./tree/dsu/dsu_1.cpp"
+						"./tree/dsu/dsu_1.cpp",
+						"./tree/最短路徑/最短路徑dfs.cpp"
 					],
 					"remove":[
+					],
+					"edit":[
+						"./tree/dsu/dsu_1.cpp"
 					]
 				}
 			]

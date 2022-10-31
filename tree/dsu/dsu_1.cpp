@@ -57,7 +57,7 @@ bool dsu_get(INT a,INT b){//查詢a和b是否連線
 	return dsu_find(a)==dsu_find(b);
 }
 void dsu_pop(INT a){//將自己移除那群裡
-//待驗證
+//會超時
 	INT newboss=0;//新老大
 	INT aboss=dsu_find(a);//a的老大
 	if(aboss==a){//如果自己就是老大
