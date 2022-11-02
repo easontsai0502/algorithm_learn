@@ -1,6 +1,6 @@
 /*
 [DP]
-此程式表示當有多個a物品時的dp
+此程式表示當有多個同樣物品時的01背包問題
 [Q]https://cses.fi/problemset/task/1159
 [AC]
 */
