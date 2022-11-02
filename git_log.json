@@ -116,7 +116,7 @@
 					"edit":[
 						"./DC/LIS/LIS_1.cpp",
 						"./dp/TFbackpack/TFbackpack_mult_item.cpp",
-						"./tree/最短路徑/最短路徑dfs.cpp",
+						"./tree/最短路徑/最短路徑dfs.cpp"
 					]
 				}
 			]
