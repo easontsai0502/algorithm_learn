@@ -1,6 +1,9 @@
 /*
 [Q]https://zerojudge.tw/ShowProblem?problemid=d908
 [AC]
+[額這一題是在找最長路徑]
+[要改最短就把line40改min即可]
+[這個方法沒有很好，僅供參考]
 */
 
 /*include*/
