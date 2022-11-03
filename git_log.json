@@ -129,6 +129,8 @@
 					"remove":[
 					],
 					"edit":[
+						"./tree/最短路徑/最短路徑-1.cpp",
+						"algorithm_learn/tree/dsu/最小生成數_q_1.cpp"
 					]
 				}
 			]
