@@ -138,7 +138,8 @@
 					"by":{"name":"ET01","mail":"kagariet01@outlook.com"},
 					"do":"files edie",
 					"add":[
-						"./tree/線段樹.cpp"
+						"./tree/線段樹.cpp",
+						"./tree/線段樹-2.cpp"
 					],
 					"remove":[
 					],
