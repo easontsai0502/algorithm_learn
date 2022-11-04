@@ -1,7 +1,7 @@
 /*
 [Q]
 [線段數]
-[err]
+[finish]
 */
 
 /*include*/
@@ -35,7 +35,7 @@ using namespace std;
 /*fn宣告*/
 /*num*/
 bool debug=false;
-bool iofast=true;
+bool iofast=false;
 const INT maxn=1000;//物件最大數量
 INT item[maxn];
 INT tree[maxn];
@@ -92,36 +92,37 @@ int main(){
 	/*write 線段數*/
 	build_tree();
 	/*cout*/
-	for(int i=0;i<14;i++){
+	for(int i=0;i<nn*2;i++){
 		cout<<tree[i]<<" ";
 	}
 	cout<<endl;
 
-	/*cin 修改資料*/
 	INT q;
 	cin>>q;
 	for(INT i=0;i<q;i++){
-		INT ad,num;
-		cin>>ad>>num;
-		ad--;
-		/*solve 修改資料*/
-		tree_numadd(ad,num);
-		/*cout*/
-		for(int i=0;i<14;i++){
-			cout<<tree[i]<<" ";
+		INT doid;
+		cin>>doid;
+		if(doid==1){
+			/*cin 修改資料*/
+			INT ad,num;
+			cin>>ad>>num;
+			ad--;
+			/*solve 修改資料*/
+			tree_numadd(ad,num);
+			/*cout*/
+			for(int i=0;i<nn*2;i++){
+				cout<<tree[i]<<" ";
+			}
+		}else{
+			/*cin 詢問區間和*/
+			INT l,r;
+			cin>>l>>r;
+			l--;r--;
+			/*solve+cout*/
+			cout<<tree_find(l,r)<<endl;
 		}
 	}
 
-	/*cin 詢問區間和*/
-	INT q2;
-	cin>>q2;
-	while(q2--){
-		INT l,r;
-		cin>>l>>r;
-		l--;r--;
-		/*solve+cout*/
-		cout<<tree_find(l,r)<<endl;
-	}
 	return 0;
 }
 /*
@@ -129,14 +130,27 @@ int main(){
 (資料數量 n)
 (資料 tree[0]) (資料 tree[0]) ... (資料 tree[n-1])
 
-(修改次數 q)
-(資料 ad (input 1-n)) (修改後資料 num)
-...q個
-
-(詢問區間和 q2)
-(左 l) (右 r)
+(動作次數 q)
+(動作編號 doid (假設是1) ) (修改位置 ad) (修改後數字 num)   修改
+(動作編號 doid (假設是2) ) (左界 l) (右界 r)               問區間
 [O]
 (輸出樹(以bfs呈現))
-(輸出刪改後的樹)*q行
-(輸出區間和)*q2行
+[輸出q行，每行輸出項目如下]
+[修改](輸出刪改後的樹)
+[問區間](輸出區間和)*q2行
+*/
+/*
+[I1]
+8
+1 2 3 4 5 6 7 8
+
+3
+2 2 3
+2 4 5
+2 4 6
+[O1]
+36 10 26 3 7 11 15 1 2 3 4 5 6 7 8 0
+5
+9
+15
 */
