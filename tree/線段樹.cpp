@@ -1,6 +1,7 @@
 /*
 [Q]
 [線段數]
+[finish]
 */
 
 /*include*/
@@ -63,9 +64,18 @@ void tree_numadd(INT ad,INT num,INT l=0,INT r=nn-1,INT node=0){//修改點資料
 		item[ad]=num;
 	}
 }
+INT tree_find(INT fl,INT fr,INT node=0,INT l=0,INT r=nn-1){
+	if(fl==l && fr==r)return tree[node];
+	else if(fr<fl)return 0;
+	else{
+		INT mnt=(l+r)/2;
+		return tree_find(fl,mnt,node*2+1,l,mnt)+tree_find(mnt+1,fr,node*2+2,mnt+1,r);
+	}
+}
 /*main*/
 int main(){
 	if(!debug && iofast){what_the_fuck;}
+
 	/*cin 原始數據*/
 	cin>>nn;
 	for(int i=0;i<nn;i++){
@@ -73,33 +83,52 @@ int main(){
 	}
 	/*write 線段數*/
 	build_tree();
+	/*cout*/
 	for(int i=0;i<14;i++){
 		cout<<tree[i]<<" ";
 	}
 	cout<<endl;
 
-
-	/*cin修改*/
+	/*cin 修改資料*/
 	INT q;
 	cin>>q;
 	for(INT i=0;i<q;i++){
 		INT ad,num;
 		cin>>ad>>num;
 		ad--;
+		/*solve 修改資料*/
 		tree_numadd(ad,num);
+		/*cout*/
+		for(int i=0;i<14;i++){
+			cout<<tree[i]<<" ";
+		}
 	}
-	/*solve 修改資料*/
-	for(int i=0;i<14;i++){
-		cout<<tree[i]<<" ";
+
+	/*cin 詢問區間和*/
+	INT q2;
+	cin>>q2;
+	while(q2--){
+		INT l,r;
+		cin>>l>>r;
+		l--;r--;
+		/*solve+cout*/
+		cout<<tree_find(l,r)<<endl;
 	}
 	return 0;
 }
 /*
 [I]
 (資料數量 n)
-(資料 1) (資料 2) ... (資料 n)
+(資料 tree[0]) (資料 tree[0]) ... (資料 tree[n-1])
 
 (刪改次數 q)
-(資料 id (1-n)) (修改後資料)
+(資料 ad (input 1-n)) (修改後資料 num)
 ...q個
+
+(詢問區間和 q2)
+(左 l) (右 r)
+[O]
+(輸出樹(以bfs呈現))
+(輸出刪改後的樹)*q行
+(輸出區間和)*q2行
 */
