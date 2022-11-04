@@ -92,7 +92,7 @@ int main(){
 				out[i]--;
 				if(winner[now]==0)winner[i]=1;//贏家swap
 				else winner[i]=0;
-				if(out[i]==0)q.push_back(i);//如果這裡是最後一次通往這，就把他列入代辦清單
+				if(out[i]==0)q.push_back(i);//如果這次是最後一次通往這，就把他列入代辦清單
 			}
 			if(debug){
 				cout<<now<<":";
