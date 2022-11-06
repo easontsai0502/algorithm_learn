@@ -66,16 +66,16 @@ void tree_numadd(INT ad,INT num,INT l=0,INT r=nn-1,INT node=0){//修改點資料
 }
 INT tree_find(INT fl,INT fr,INT node=0,INT l=0,INT r=nn-1){
 	if(debug)cout<<"fl="<<fl<<",fr="<<fr<<",node="<<node<<",l="<<l<<",r="<<r<<endl;
-	if(fl==l && fr==r)return tree[node];//若目前尋找的範圍(fl,fr)和框的範圍(l,r)相同
+	if(fl<=l && r<=fr)return tree[node];//若目前尋找的範圍(fl,fr)和框的範圍(l,r)相同
 	if(fl==fr)return item[fl];//如果只要找該數值
 	else{
 		INT mnt=(l+r)/2;
 		INT re=0;
 		if(fl<=mnt){//mnt左邊
-			re+=tree_find(fl,min(mnt,fr),node*2+1,l,mnt);
+			re+=tree_find(fl,fr,node*2+1,l,mnt);
 		}
-		if(mnt<=fr){//mnt右邊
-			re+=tree_find(max(mnt+1,fl),fr,node*2+2,mnt+1,r);
+		if(mnt<fr){//mnt右邊
+			re+=tree_find(fl,fr,node*2+2,mnt+1,r);
 		}
 		return re;
 	}
