@@ -35,7 +35,8 @@ using namespace std;
 /*fn宣告*/
 /*num*/
 bool debug=false;
-bool iofast=false;
+bool iofast=true;
+bool couttree=false;
 const INT maxn=1000;//物件最大數量
 INT item[maxn];
 INT tree[maxn];
@@ -92,10 +93,12 @@ int main(){
 	/*write 線段數*/
 	build_tree();
 	/*cout*/
-	for(int i=0;i<nn*2;i++){
-		cout<<tree[i]<<" ";
+	if(couttree){
+		for(int i=0;i<nn*2;i++){
+			cout<<tree[i]<<" ";
+		}
+		cout<<endl;
 	}
-	cout<<endl;
 
 	INT q;
 	cin>>q;
@@ -110,8 +113,10 @@ int main(){
 			/*solve 修改資料*/
 			tree_numadd(ad,num);
 			/*cout*/
-			for(int i=0;i<nn*2;i++){
-				cout<<tree[i]<<" ";
+			if(couttree){
+				for(int i=0;i<nn*2;i++){
+					cout<<tree[i]<<" ";
+				}
 			}
 		}else{
 			/*cin 詢問區間和*/
