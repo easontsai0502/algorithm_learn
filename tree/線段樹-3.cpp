@@ -1,7 +1,7 @@
 /*
 [Q]
-[線段數]
-[finish]
+[線段數-求區間最大值]
+[]
 */
 
 /*include*/
@@ -37,9 +37,9 @@ using namespace std;
 bool debug=false;
 bool iofast=true;
 bool couttree=false;
-const INT maxn=1000;//物件最大數量
+const INT maxn=1001;//物件最大數量
 INT item[maxn];
-INT tree[maxn];
+INT tree[maxn<<1];
 INT nn;
 /*fn定義*/
 INT build_tree(INT node=0,INT l=0,INT r=nn-1){//將原始資料建立成線段數，原始數據也須保留，以便刪改
@@ -48,21 +48,22 @@ INT build_tree(INT node=0,INT l=0,INT r=nn-1){//將原始資料建立成線段�
 		return tree[node];
 	}else{
 		INT mnt=(l+r)/2;
-		tree[node]=build_tree(node*2+1,l,mnt)+build_tree(node*2+2,mnt+1,r);
+		tree[node]=max(build_tree(node*2+1,l,mnt),build_tree(node*2+2,mnt+1,r));
 		return tree[node];
 	}
 }
-void tree_numadd(INT ad,INT num,INT l=0,INT r=nn-1,INT node=0){//修改點資料(ad為原始資料的位置,num為修改後的數字)
-	if(l<=ad && ad<=r){
+INT tree_numadd(INT ad,INT num,INT l=0,INT r=nn-1,INT node=0){//修改點資料(ad為原始資料的位置,num為修改後的數字)
+	if(l<=ad && ad<=r){//若現在在區間內
 		tree[node]-=item[ad];
 		tree[node]+=num;
 		if(l!=r){
-		INT mnt=(l+r)/2;
-		
-		tree_numadd(ad,num,l,mnt,node*2+1);
-		tree_numadd(ad,num,mnt+1,r,node*2+2);
+			INT mnt=(l+r)/2;
+			tree_numadd(ad,num,l,mnt,node*2+1);
+			tree_numadd(ad,num,mnt+1,r,node*2+2);
 		}
 		item[ad]=num;
+	}else{
+		return tree[node];
 	}
 }
 INT tree_find(INT fl,INT fr,INT node=0,INT l=0,INT r=nn-1){

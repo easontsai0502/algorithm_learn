@@ -1,7 +1,7 @@
 /*
 [Q]
-[線段數]
-[finish]
+[線段數-求區間和]
+[maybe WA]
 */
 
 /*include*/
