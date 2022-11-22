@@ -54,18 +54,21 @@ INT build_tree(INT node=0,INT l=0,INT r=nn-1){//將原始資料建立成線段�
 }
 INT tree_numadd(INT ad,INT num,INT l=0,INT r=nn-1,INT node=0){//修改點資料(ad為原始資料的位置,num為修改後的數字)
 	if(l<=ad && ad<=r){//若現在在區間內
-		tree[node]-=item[ad];
-		tree[node]+=num;
-		if(l!=r){
+		if(l==r){
+			tree[node]=num;
+			item[ad]=num;
+			return num;
+		}else{
 			INT mnt=(l+r)/2;
-			tree_numadd(ad,num,l,mnt,node*2+1);
-			tree_numadd(ad,num,mnt+1,r,node*2+2);
+			INT re=max(tree_numadd(ad,num,l,mnt,node*2+1),tree_numadd(ad,num,mnt+1,r,node*2+2));
+			tree[node]=re;
+			return re;
 		}
-		item[ad]=num;
 	}else{
 		return tree[node];
 	}
 }
+/*改到這*/
 INT tree_find(INT fl,INT fr,INT node=0,INT l=0,INT r=nn-1){
 	if(debug)cout<<"fl="<<fl<<",fr="<<fr<<",node="<<node<<",l="<<l<<",r="<<r<<endl;
 	if(fl<=l && r<=fr)return tree[node];//若目前尋找的範圍(fl,fr)和框的範圍(l,r)相同
