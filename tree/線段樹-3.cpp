@@ -1,7 +1,7 @@
 /*
 [Q]
 [線段數-求區間最大值]
-[]
+[dev]
 */
 
 /*include*/
@@ -35,8 +35,8 @@ using namespace std;
 /*fn宣告*/
 /*num*/
 bool debug=false;
-bool iofast=true;
-bool couttree=false;
+bool iofast=0;
+bool couttree=1;
 const INT maxn=1001;//物件最大數量
 INT item[maxn];
 INT tree[maxn<<1];
@@ -73,14 +73,15 @@ INT tree_find(INT fl,INT fr,INT node=0,INT l=0,INT r=nn-1){
 	if(debug)cout<<"fl="<<fl<<",fr="<<fr<<",node="<<node<<",l="<<l<<",r="<<r<<endl;
 	if(fl<=l && r<=fr)return tree[node];//若目前尋找的範圍(fl,fr)和框的範圍(l,r)相同
 	if(fl==fr)return item[fl];//如果只要找該數值
+	if(r<fl || fr<l)return 0;
 	else{
 		INT mnt=(l+r)/2;
 		INT re=0;
 		if(fl<=mnt){//mnt左邊
-			re+=tree_find(fl,fr,node*2+1,l,mnt);
+			re=max(re,tree_find(fl,fr,node*2+1,l,mnt));
 		}
 		if(mnt<fr){//mnt右邊
-			re+=tree_find(fl,fr,node*2+2,mnt+1,r);
+			re=max(re,tree_find(fl,fr,node*2+2,mnt+1,r));
 		}
 		return re;
 	}
@@ -121,6 +122,7 @@ int main(){
 				for(int i=0;i<nn*2;i++){
 					cout<<tree[i]<<" ";
 				}
+				cout<<endl;
 			}
 		}else{
 			/*cin 詢問區間和*/
@@ -153,13 +155,17 @@ int main(){
 8
 1 2 3 4 5 6 7 8
 
-3
+5
 2 2 3
 2 4 5
 2 4 6
+1 8 1
+2 6 8
 [O1]
-36 10 26 3 7 11 15 1 2 3 4 5 6 7 8 0
+8 4 8 2 4 6 8 1 2 3 4 5 6 7 8
+3
 5
-9
-15
+6
+7 4 7 2 4 6 7 1 2 3 4 5 6 7 1
+7
 */
