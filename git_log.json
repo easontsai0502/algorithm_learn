@@ -190,9 +190,11 @@
 					"edit":[
 						"./tree/線段樹-3.cpp"
 					],
-					"remove":[
-					],
 					"add":[
+						"./tree/線段數-4.cpp",
+						"./test.cpp"
+					],
+					"remove":[
 					]
 				}
 			]

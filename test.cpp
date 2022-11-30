@@ -1,6 +1,6 @@
 /*
 [Q]
-[線段數-求區間最大值]
+[線段數-求區間最大,最小值,和]
 [dev]
 */
 
@@ -31,12 +31,15 @@ using namespace std;
 #define UINT unsigned INT
 #define PII pair<INT,INT>
 #define PUIUI pair<UINT,UINT>
+#define elif else if
+#define ifif if
 /*struct*/
 /*fn宣告*/
 /*num*/
-bool debug=false;
-bool iofast=0;
-bool couttree=1;
+bool debug=0;
+bool iofast=1;
+bool couttree=0;
+INT workmode=-1;//1==球最大, 0=球total, -1=球最小
 const INT maxn=1001;//物件最大數量
 INT item[maxn];
 INT tree[maxn<<1];
@@ -48,7 +51,9 @@ INT build_tree(INT node=0,INT l=0,INT r=nn-1){//將原始資料建立成線段�
 		return tree[node];
 	}else{
 		INT mnt=(l+r)/2;
-		tree[node]=max(build_tree(node*2+1,l,mnt),build_tree(node*2+2,mnt+1,r));
+		ifif(workmode==1) tree[node]=max(build_tree(node*2+1,l,mnt),build_tree(node*2+2,mnt+1,r));
+		elif(workmode==0) tree[node]=build_tree(node*2+1,l,mnt)+build_tree(node*2+2,mnt+1,r);
+		elif(workmode==-1)tree[node]=min(build_tree(node*2+1,l,mnt),build_tree(node*2+2,mnt+1,r));
 		return tree[node];
 	}
 }
@@ -60,7 +65,10 @@ INT tree_numadd(INT ad,INT num,INT l=0,INT r=nn-1,INT node=0){//修改點資料(
 			return num;
 		}else{
 			INT mnt=(l+r)/2;
-			INT re=max(tree_numadd(ad,num,l,mnt,node*2+1),tree_numadd(ad,num,mnt+1,r,node*2+2));
+			INT re=0;
+			ifif(workmode==1) re=max(tree_numadd(ad,num,l,mnt,node*2+1),tree_numadd(ad,num,mnt+1,r,node*2+2));
+			elif(workmode==0) re=(tree_numadd(ad,num,l,mnt,node*2+1)+tree_numadd(ad,num,mnt+1,r,node*2+2));
+			elif(workmode==-1)re=min(tree_numadd(ad,num,l,mnt,node*2+1),tree_numadd(ad,num,mnt+1,r,node*2+2));
 			tree[node]=re;
 			return re;
 		}
@@ -68,6 +76,7 @@ INT tree_numadd(INT ad,INT num,INT l=0,INT r=nn-1,INT node=0){//修改點資料(
 		return tree[node];
 	}
 }
+/*改到這*/
 INT tree_find(INT fl,INT fr,INT node=0,INT l=0,INT r=nn-1){
 	if(debug)cout<<"fl="<<fl<<",fr="<<fr<<",node="<<node<<",l="<<l<<",r="<<r<<endl;
 	if(fl<=l && r<=fr)return tree[node];//若目前尋找的範圍(fl,fr)和框的範圍(l,r)相同
@@ -76,11 +85,20 @@ INT tree_find(INT fl,INT fr,INT node=0,INT l=0,INT r=nn-1){
 	else{
 		INT mnt=(l+r)/2;
 		INT re=0;
-		if(fl<=mnt){//mnt左邊
-			re=max(re,tree_find(fl,fr,node*2+1,l,mnt));
+		INT ll=0;
+		INT rr=0;
+		bool lt=fl<=mnt;
+		bool rt=mnt<fr;
+		if(lt){//mnt左邊
+			re=ll=(tree_find(fl,fr,node*2+1,l,mnt));
 		}
-		if(mnt<fr){//mnt右邊
-			re=max(re,tree_find(fl,fr,node*2+2,mnt+1,r));
+		if(rt){//mnt右邊
+			re=rr=(tree_find(fl,fr,node*2+2,mnt+1,r));
+		}
+		if(lt && rt){
+			ifif(workmode==1) re=max(ll,rr);
+			elif(workmode==0) re=ll+rr;
+			elif(workmode==-1)re=min(ll,rr);
 		}
 		return re;
 	}
@@ -91,6 +109,8 @@ int main(){
 
 	/*cin 原始數據*/
 	cin>>nn;
+	INT q;
+	cin>>q;
 	for(int i=0;i<nn;i++){
 		cin>>item[i];
 	}
@@ -104,8 +124,6 @@ int main(){
 		cout<<endl;
 	}
 
-	INT q;
-	cin>>q;
 	for(INT i=0;i<q;i++){
 		INT doid;
 		cin>>doid;
