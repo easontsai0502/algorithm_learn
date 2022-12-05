@@ -1,6 +1,7 @@
 /*
-[Q]
-[]
+[Q]https://cses.fi/problemset/task/1722/
+[AC]
+[矩陣快速冪]
 */
 
 /*include*/
@@ -27,7 +28,7 @@ using namespace std;
 #define what_the_fuck cin.tie(0);cout.tie(0);ios::sync_with_stdio(false)
 #define ULLI unsigned long long int
 #define LLI long long int
-#define INT int
+#define INT LLI
 #define UINT unsigned INT
 #define PII pair<INT,INT>
 #define PUIUI pair<UINT,UINT>
@@ -43,7 +44,7 @@ using namespace std;
 struct mat;
 /*fn宣告*/
 /*num*/
-bool debug=0;
+bool debug=1;
 bool iofast=true;
 INT n,m,q;
 const INT mxnm=1e6;
@@ -55,7 +56,7 @@ map<PII,bool>waswalk;
 PII mv[]={{0,1},{1,0},{0,-1},{-1,0}};
 INT mx[]={0,1,0,-1};
 INT my[]={1,0,-1,0};
-INT mod=988244353;
+INT mod=1e9+7;
 /*struct定義*/
 struct mat{
 	INT a[2][2];
@@ -78,11 +79,36 @@ struct mat{
 PII padd(PII a,PII b){
 	return {a.FIR+b.FIR,a.SEC+b.SEC};
 }
+map<INT,mat> ansl;
+void solve(INT n){
+	if(n==0){
+		return;
+	}
+	if(n==1){
+		ansl[1].a[0][1]=1;
+		ansl[1].a[1][0]=1;
+		ansl[1].a[1][1]=1;
+	}
+	else{
+		solve(n/2);
+		ansl[n]=ansl[n/2]*ansl[n/2];
+		if(n%2){
+			ansl[n]=ansl[1]*ansl[n];
+		}
+	}
+}
 /*main*/
 int main(){
 	if(!debug&&iofast){what_the_fuck;}
 	/*CIN*/
+	INT n;
+	cin>>n;
 	/*solve*/
+	mat fir;
+	fir.a[0][0]=0;
+	fir.a[0][1]=1;
+	solve(n);
+	cout<<ansl[n].a[0][1]<<endl;
 	return 0;
 }
 
