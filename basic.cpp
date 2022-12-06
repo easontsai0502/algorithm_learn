@@ -1,6 +1,6 @@
 /*
 [Q]
-[TLE]
+[]
 */
 
 /*include*/
@@ -45,13 +45,7 @@ struct mat;
 /*num*/
 bool debug=0;
 bool iofast=true;
-INT n,m,q;
-const INT mxnm=1e6;
-map<PII,INT>mp;
 
-deque<pair<PII,INT>>dol;
-map<PII,bool>waswalk;
-//INT mp[mxnm+5][mxnm+5];
 PII mv[]={{0,1},{1,0},{0,-1},{-1,0}};
 INT mx[]={0,1,0,-1};
 INT my[]={1,0,-1,0};
