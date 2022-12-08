@@ -232,6 +232,19 @@
 					],
 					"remove":[
 					]
+				},
+				{
+					"time":"12-08-2022-18:04",
+					"by":{"name":"ET01","mail":"kagariet01@outlook.com"},
+					"do":"files edie",
+					"edit":[
+						"./矩陣/矩陣快速冪-q1.cpp",
+						"./basic.cpp"
+					],
+					"add":[
+					],
+					"remove":[
+					]
 				}
 			]
 		}

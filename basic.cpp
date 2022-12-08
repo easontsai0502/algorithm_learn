@@ -19,6 +19,7 @@
 #include<deque>
 #include<map>
 #include<set>
+#include<cstring>
 
 /*using namespace*/
 using namespace std;
@@ -36,8 +37,6 @@ using namespace std;
 #define FIR first
 #define SEC second
 #define elif else if
-//#define CIN( nn ) DBG{cout<<"input:"<<endl;}cin >> nn ;
-//#define COUT( nn ) DBG{cout<<"output:{";}cout << nn ; DBG{cout<<"}"<<endl;}
 #define wassomething() empty()==false
 /*struct宣告*/
 struct mat;
