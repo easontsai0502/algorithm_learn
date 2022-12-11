@@ -38,6 +38,10 @@ using namespace std;
 #define SEC second
 #define elif else if
 #define wassomething() empty()==false
+#define PB(n) push_back(n)
+#define PF(n) push_front(n)
+#define PB() pop_back()
+#define PF() pop_front()
 /*struct宣告*/
 struct mat;
 /*fn宣告*/
