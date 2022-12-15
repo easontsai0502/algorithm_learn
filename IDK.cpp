@@ -1,6 +1,5 @@
 /*
-[tioj]	[Q]https://tioj.ck.tp.edu.tw/problems/ [ID]
-[zj]		[Q]https://zerojudge.tw/ShowProblem?problemid= [ID]
+[Q]
 []
 */
 
@@ -21,7 +20,6 @@
 #include<map>
 #include<set>
 #include<cstring>
-#include<iomanip>
 
 /*using namespace*/
 using namespace std;
@@ -30,7 +28,7 @@ using namespace std;
 #define what_the_fuck cin.tie(0);cout.tie(0);ios::sync_with_stdio(false)
 #define ULLI unsigned long long int
 #define LLI long long int
-#define INT LLI
+#define INT int
 #define UINT unsigned INT
 #define PII pair<INT,INT>
 #define PUIUI pair<UINT,UINT>
@@ -40,8 +38,10 @@ using namespace std;
 #define SEC second
 #define elif else if
 #define wassomething() empty()==false
-#define REre return re
-#define P(n,m) pair<n,m>
+#define PB(n) push_back(n)
+#define PF(n) push_front(n)
+#define PB() pop_back()
+#define PF() pop_front()
 /*struct宣告*/
 struct mat;
 /*fn宣告*/
@@ -75,15 +75,12 @@ struct mat{
 PII padd(PII a,PII b){
 	return {a.FIR+b.FIR,a.SEC+b.SEC};
 }
-INT INT_IN(){
-	INT a;
-	cin>>a;
-	return a;
-}
 /*main*/
 int main(){
 	if(!debug&&iofast){what_the_fuck;}
 	/*CIN*/
+	string a="abcdefg";
+	string str=a.substr(0,3);
 	/*solve*/
 	return 0;
 }
