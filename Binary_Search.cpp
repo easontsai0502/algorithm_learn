@@ -78,11 +78,16 @@ bool vser(const INT &n,const INT &nw){
 	return n<=nw;
 }
 
-template<typename TPE,typename Fn>TPE Bit_Search(const TPE l,const TPE r,TPE n,Fn isit){
-	while(true){
+template<typename TPE,typename Fn>TPE Bit_Search(TPE l,TPE r,TPE n,Fn isit){
+	while(r-l>1){
 		TPE nw=(r+l)/2;
+		if(isit(n,nw)){
+			r=nw;
+		}else{
+			l=nw;
+		}
 	}
-	return a;
+	return r;
 }
 
 /*main*/
