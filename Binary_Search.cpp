@@ -78,10 +78,10 @@ bool vser(const INT &n,const INT &nw){
 	return n<=nw;
 }
 
-template<typename TPE,typename Fn>TPE Bit_Search(TPE l,TPE r,TPE n,Fn isit){
+template<typename TPE,typename TPE2,typename Fn>TPE Bit_Search(TPE l,TPE r,TPE2 n,Fn isit){
 	while(r-l>1){
-		TPE nw=(r+l)/2;
-		if(isit(n,nw)){
+		TPE nw=l+(r-l)/2;
+		if(isit(n,*nw)){
 			r=nw;
 		}else{
 			l=nw;
@@ -98,9 +98,11 @@ int main(){
 	a.push_back(0);
 	a.push_back(1);
 	a.push_back(2);
-	a.push_back(3);
 	a.push_back(4);
-	Bit_Search(a.begin(),a.end(),a.begin(),vser);
+	a.push_back(5);
+	a.push_back(6);
+	vector<INT>::iterator it=Bit_Search(a.begin(),a.end(),3,vser);
+	cout<<*it<<endl;
 	/*solve*/
 	return 0;
 }
