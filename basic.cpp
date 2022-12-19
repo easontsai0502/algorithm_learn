@@ -80,10 +80,19 @@ INT INT_IN(){
 	cin>>a;
 	return a;
 }
+
+template<typename TPE>TPE reader(){
+	TPE a;
+	cin>>a;
+	return a;
+}
+
 /*main*/
 int main(){
 	if(!debug&&iofast){what_the_fuck;}
 	/*CIN*/
+	INT n=reader<INT>();
+	cout<<n;
 	/*solve*/
 	return 0;
 }
