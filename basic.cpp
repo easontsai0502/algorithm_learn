@@ -1,6 +1,6 @@
 /*
 [tioj]	[Q]https://tioj.ck.tp.edu.tw/problems/ [ID]
-[zj]
+[zj]		[Q]https://zerojudge.tw/ShowProblem?problemid= [ID]
 []
 */
 
@@ -40,6 +40,8 @@ using namespace std;
 #define SEC second
 #define elif else if
 #define wassomething() empty()==false
+#define REre return re
+#define P(n,m) pair<n,m>
 /*struct宣告*/
 struct mat;
 /*fn宣告*/
@@ -72,6 +74,11 @@ struct mat{
 /*fn定義*/
 PII padd(PII a,PII b){
 	return {a.FIR+b.FIR,a.SEC+b.SEC};
+}
+INT INT_IN(){
+	INT a;
+	cin>>a;
+	return a;
 }
 /*main*/
 int main(){
