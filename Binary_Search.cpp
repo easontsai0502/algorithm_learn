@@ -79,6 +79,7 @@ bool vser(const INT &n,const INT &nw){
 }
 
 template<typename TPE,typename TPE2,typename Fn>TPE Bit_Search(TPE l,TPE r,TPE2 n,Fn isit){
+	if(isit(n,*l))return l;
 	while(r-l>1){
 		TPE nw=l+(r-l)/2;
 		if(isit(n,*nw)){
