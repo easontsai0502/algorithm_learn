@@ -74,15 +74,15 @@ PII padd(PII a,PII b){
 	return {a.FIR+b.FIR,a.SEC+b.SEC};
 }
 
-bool vser(const INT &n,const INT &nw){
-	return n<=nw;
+bool vser(INT n,vector<INT>::iterator nw){
+	return n<=*nw;
 }
 
 template<typename TPE,typename TPE2,typename Fn>TPE Bit_Search(TPE l,TPE r,TPE2 n,Fn isit){
-	if(isit(n,*l))return l;
+	if(isit(n,l))return l;
 	while(r-l>1){
 		TPE nw=l+(r-l)/2;
-		if(isit(n,*nw)){
+		if(isit(n,nw)){
 			r=nw;
 		}else{
 			l=nw;
