@@ -47,6 +47,9 @@ using namespace std;
 /*struct宣告*/
 struct mat;
 /*fn宣告*/
+template<typename TPE>TPE tt(INT a,INT b){
+	return a+b;
+}
 /*num*/
 bool debug=0;
 bool iofast=true;
@@ -56,6 +59,16 @@ INT mx[]={0,1,0,-1};
 INT my[]={1,0,-1,0};
 INT mod=988244353;
 /*struct定義*/
+template<typename TPE>struct seg_tree{
+	vector<TPE> vec;
+	vector<TPE> 
+	seg_tree push_back(TPE n){
+		vec.push_back(n);
+	}
+	template<typename FnTPE>seg_tree build(FnTPE fn){
+		
+	}
+};
 /*fn定義*/
 
 template<typename TPE>TPE reader(){
