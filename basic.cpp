@@ -11,6 +11,7 @@
 #pragma GCC optimize("O2")
 #pragma GCC optimize("O1")
 #pragma GCC optimize("O3")
+//#include<bits/stdc++.h>
 #include<iostream>
 #include<cstring>
 #include<algorithm>
@@ -44,8 +45,8 @@ using namespace std;
 #define wassomething() empty()==false
 #define REre return re
 #define P(n,m) pair<n,m>
+#define read(n) reader<n>()
 /*struct宣告*/
-struct mat;
 /*fn宣告*/
 /*num*/
 bool debug=0;

@@ -106,10 +106,10 @@ template<typename TPE,typename Fn>auto LIS(TPE a,Fn fn){
 		}
 		else{
 			auto it=lower_bound(vec.begin(),vec.end(),a[i]);
-			/*while(!( fn (*(it-1),a[i]) )){
+			while(!( fn (*(it-1),a[i]) )){
 				//接下來要把it調換掉，所以檢查vec 0~(it-1)的陣列加入a[i]是否合法
 				it--;
-			}*/
+			}
 			*it=a[i];
 			dp[i]=(int)(it-vec.begin()+1);
 		}

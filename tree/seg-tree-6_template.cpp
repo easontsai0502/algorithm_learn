@@ -60,13 +60,32 @@ INT my[]={1,0,-1,0};
 INT mod=988244353;
 /*struct定義*/
 template<typename TPE>struct seg_tree{
+	INT sz=0;
 	vector<TPE> vec;
-	vector<TPE> 
-	seg_tree push_back(TPE n){
+	vector<TPE> tree;
+	INT push_back(TPE n){
 		vec.push_back(n);
+		sz++;
+		return sz;
 	}
-	template<typename FnTPE>seg_tree build(FnTPE fn){
-		
+	INT size(){
+		return sz;
+	}
+	template<typename FnTPE>TPE build(FnTPE fn){
+		tree.resize(sz<<1+1);
+		return builder(fn=fn);
+	}
+	template<typename FnTPE>TPE builder(INT l=0,INT r=sz-1,INT nw=0,FnTPE fn){
+		if(l==r){
+			tree[nw]=vec[l];
+		}
+		else{
+			INT mnt=(l+r)/2;
+			TPE tl=builder(l,mnt,nw*2+1,fn);
+			TPE tr=builder(mnt+1,r,nw*2+2,fn);
+			tree[nw]=fn(tl,tr);
+		}
+		return tree[nw];
 	}
 };
 /*fn定義*/
