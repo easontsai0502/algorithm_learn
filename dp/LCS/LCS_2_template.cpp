@@ -54,6 +54,7 @@ template<typename TPE>auto LCS(TPE a,TPE b){
 			}
 		}
 	}
+	//get 子序列
 	TPE re;
 	re.clear();
 	INT i=as,j=bs;
