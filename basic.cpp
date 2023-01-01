@@ -25,6 +25,7 @@
 #include<set>
 #include<cstring>
 #include<iomanip>
+#include<ctime>
 
 /*using namespace*/
 using namespace std;
@@ -68,6 +69,7 @@ template<typename TPE>TPE reader(){
 /*main*/
 int main(){
 	if(!debug&&iofast){what_the_fuck;}
+	srand(time(NULL));
 	/*CIN*/
 	INT n=reader<INT>();
 	cout<<n;
