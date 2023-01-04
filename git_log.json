@@ -269,6 +269,36 @@
 					],
 					"remove":[
 					]
+				},
+				{
+					"time":"12-23-2022-20:54",
+					"by":{"name":"ET01","mail":"kagariet01@outlook.com"},
+					"do":"files edie",
+					"edit":[
+						"./dp/LCS/LCS_2_template.cpp"
+					],
+					"add":[
+						"./dp/LIS/LIS_2_template.cpp",
+						"./tree/seg-tree-6_template.cpp"
+					],
+					"remove":[
+					]
+				},
+				{
+					"time":"12-25-2022-13:19",
+					"by":{"name":"ET01","mail":"kagariet01@outlook.com"},
+					"do":"files edie",
+					"edit":[
+						"./basic.cpp",
+						"./dp/LIS/LIS_2_template.cpp",
+						"tree/BFS/Topological_sorting/Topological_sorting_q_1.cpp",
+						"tree/seg-tree-6_template.cpp"
+					],
+					"add":[
+						"./codebook.docx"
+					],
+					"remove":[
+					]
 				}
 			]
 		}

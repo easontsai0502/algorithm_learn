@@ -3,7 +3,7 @@
 [zj]				[Q]https://zerojudge.tw/ShowProblem?problemid= [ID]
 [cses]			[Q]https://cses.fi/problemset/task/ [ID]
 [AtCoder]		[Q]https://atcoder.jp/contests/ [ID] /tasks/ [ID] _ [PID]
-[maybe TLE]
+[]
 */
 
 /*include*/
@@ -47,6 +47,9 @@ using namespace std;
 /*struct宣告*/
 struct mat;
 /*fn宣告*/
+template<typename TPE>TPE tt(INT a,INT b){
+	return a+b;
+}
 /*num*/
 bool debug=0;
 bool iofast=true;
@@ -56,32 +59,36 @@ INT mx[]={0,1,0,-1};
 INT my[]={1,0,-1,0};
 INT mod=988244353;
 /*struct定義*/
-struct mat{
-	INT a[2][2];
-	mat(){
-		memset(a,0,sizeof(a));
+template<typename TPE>struct seg_tree{
+	INT sz=0;
+	vector<TPE> vec;
+	vector<TPE> tree;
+	INT push_back(TPE n){
+		vec.push_back(n);
+		sz++;
+		return sz;
 	}
-	mat operator*(const mat &b)const{
-		mat re;
-		for(INT i=0;i<2;i++){
-			for(INT j=0;j<2;j++){
-				for(INT k=0;k<2;k++){
-					re.a[i][j]=(re.a[i][j]+a[i][k]*b.a[k][j])%mod;
-				}
-			}
+	INT size(){
+		return sz;
+	}
+	template<typename FnTPE>TPE build(FnTPE fn){
+		tree.resize(sz<<1+1);
+		return builder(fn=fn);
+	}
+	template<typename FnTPE>TPE builder(INT l=0,INT r=sz-1,INT nw=0,FnTPE fn){
+		if(l==r){
+			tree[nw]=vec[l];
 		}
-		return re;
+		else{
+			INT mnt=(l+r)/2;
+			TPE tl=builder(l,mnt,nw*2+1,fn);
+			TPE tr=builder(mnt+1,r,nw*2+2,fn);
+			tree[nw]=fn(tl,tr);
+		}
+		return tree[nw];
 	}
 };
 /*fn定義*/
-PII padd(PII a,PII b){
-	return {a.FIR+b.FIR,a.SEC+b.SEC};
-}
-INT INT_IN(){
-	INT a;
-	cin>>a;
-	return a;
-}
 
 template<typename TPE>TPE reader(){
 	TPE a;
@@ -89,58 +96,13 @@ template<typename TPE>TPE reader(){
 	return a;
 }
 
-template<typename TPE>bool vser(TPE a,TPE b){
-	return a<b;
-}
-
-template<typename TPE,typename Fn>auto LIS(TPE a,Fn fn){
-	INT N=(int)a.size();
-	INT dp[N+1];dp[0]=1;
-	TPE vec;vec.push_back(a[0]);
-	INT L=1;
-	for(INT i=1;i<N;i++){
-		if(fn(vec.back(),a[i])){
-			vec.push_back(a[i]);
-			L++;
-			dp[i]=L;
-		}
-		else{
-			auto it=lower_bound(vec.begin(),vec.end(),a[i]);
-			while(!( fn (*(it-1),a[i]) )){
-				//接下來要把it調換掉，所以檢查vec 0~(it-1)的陣列加入a[i]是否合法
-				it--;
-			}
-			*it=a[i];
-			dp[i]=(int)(it-vec.begin()+1);
-		}
-	}
-	TPE re;
-	INT mx=L;
-	for(INT i=N-1;i>=0;i--){
-		if(dp[i]==L){
-			re.push_back(a[i]);
-			L--;
-		}
-	}
-	reverse(re.begin(),re.end());
-	pair<INT,TPE> rere={mx,re};
-	return rere;
-}
-
 /*main*/
 int main(){
 	if(!debug&&iofast){what_the_fuck;}
 	/*CIN*/
-	vector<INT> vec;
-	INT n;
-	while(n=reader<INT>())vec.push_back(n);
+	INT n=reader<INT>();
+	cout<<n;
 	/*solve*/
-	auto ans=LIS(vec,vser<INT>);
-	cout<<ans.FIR<<endl;
-	cout<<"-"<<endl;
-	for(INT i:ans.SEC){
-		cout<<i<<endl;
-	}
 	return 0;
 }
 

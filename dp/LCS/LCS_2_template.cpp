@@ -43,8 +43,8 @@ bool debug=false;
 template<typename TPE>auto LCS(TPE a,TPE b){
 	INT dp[a.size()+1][b.size()+1];
 	memset(dp,0,sizeof(dp));
-	int as=a.size();
-	int bs=b.size();
+	INT as=a.size();
+	INT bs=b.size();
 	for(INT i=1;i<=as;i++){
 		for(INT j=1;j<=bs;j++){
 			if(a[i-1]==b[j-1]){
@@ -54,6 +54,7 @@ template<typename TPE>auto LCS(TPE a,TPE b){
 			}
 		}
 	}
+	//get 子序列
 	TPE re;
 	re.clear();
 	INT i=as,j=bs;

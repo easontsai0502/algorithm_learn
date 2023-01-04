@@ -80,7 +80,7 @@ int main(){
 		cin>>fplay;
 		/*solve*/
 		//bfs
-		//拓撲排序
+		//撲排序拓
 		deque<INT>q;
 		q.push_back(n-1);
 		winner[n-1]=0;//數字為0，先的人贏
